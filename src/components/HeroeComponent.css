@@ -1,0 +1,60 @@
+
+.heroes-card {
+  border: 1px solid #CCC;
+  width: 400px;
+  height:220px;
+  margin-bottom: 20px;
+  
+  display: flex;
+  flex-direction: row;
+}
+
+.heroes-card__img {
+  flex-basis: 170px;
+}
+
+.heroes-card img {
+  width: 100%;
+  height: 100%;
+}
+
+.heroes-card__body {
+  flex-basis: 60%;
+  padding: 10px 16px;
+}
+
+.body-title {
+  font-size: 22px;
+}
+
+
+@media all and (min-width: 768px) {
+  .heroes-card {
+    border: 1px solid #CCC;
+    width: 400px;
+    height:220px;
+    margin-bottom: 20px;
+    
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .heroes-card__img {
+    flex-basis: 1;
+  }
+  
+  .heroes-card img {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .heroes-card__body {
+    flex-basis: 2;
+    padding: 10px 16px;
+  }
+  
+  .body-title {
+    font-size: 22px;
+  }
+  
+}
