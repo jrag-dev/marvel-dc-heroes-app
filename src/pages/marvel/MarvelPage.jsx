@@ -1,25 +1,18 @@
 import React, { useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
 import { getHeroesByPublisher, useStore } from '../../store';
 import { HeroeComponent } from '../../components/HeroeComponent';
+import withAuthComponent from '../../components/withAuthComponent';
 
 
 const MarvelPage = () => {
 
-  const { user, heroes } = useStore( state => state )
-
-  const navigate = useNavigate();
+  const { heroes } = useStore( state => state )
 
   useEffect(() => {
-    if (!user) {
-      navigate('/login?redirect=/heroes')
-    }
-  getHeroesByPublisher("Marvel Comics")
+    getHeroesByPublisher("Marvel Comics")
   }, [])
-  
 
   if (!heroes) return <div>Cargando...</div>
-
 
   return (
     <section className="heroes container">
@@ -49,4 +42,4 @@ const MarvelPage = () => {
   )
 }
 
-export default MarvelPage
+export default withAuthComponent(MarvelPage)

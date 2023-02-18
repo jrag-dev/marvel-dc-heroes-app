@@ -4,19 +4,15 @@ import { getAllHeroes, useStore } from '../../store';
 import { HeroeComponent } from '../../components/HeroeComponent';
 
 import "./HeroesPage.css";
+import withAuthComponent from '../../components/withAuthComponent';
 
 
 const HeroesPage = () => {
 
-  const { user, heroes } = useStore( state => state )
-
-  const navigate = useNavigate();
+  const { heroes } = useStore( state => state )
 
   useEffect(() => {
-    if (!user) {
-      navigate('/login?redirect=/heroes')
-    }
-  getAllHeroes()
+    getAllHeroes()
   }, [])
   
 
@@ -52,4 +48,4 @@ const HeroesPage = () => {
   )
 }
 
-export default HeroesPage
+export default withAuthComponent(HeroesPage)

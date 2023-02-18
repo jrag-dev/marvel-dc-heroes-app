@@ -48,13 +48,13 @@ export const getAllHeroes = () => {
 
 
 export const getHeroesById = (id) => {
-  const heroesFiltered = heroes.filter( (heroe) => heroe.id === id );
-  localStorage.setItem('heroes', JSON.stringify(heroesFiltered))
+  const heroFiltered = heroes.filter( (heroe) => heroe.id === id )[0];
+  localStorage.setItem('hero', JSON.stringify(heroFiltered))
 
   return useStore.setState( state => ({
     cargando: false,
     error: false,
-    heroes: heroesFiltered
+    hero: heroFiltered
   }))
 }
 

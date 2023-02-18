@@ -25,7 +25,7 @@ const HeaderComponent = () => {
 
   const logoutHandler = () => {
     signout()
-    window.location.href = '/login';
+    window.location.href = '/';
   }
 
   return (

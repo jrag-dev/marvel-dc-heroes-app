@@ -1,18 +1,13 @@
 import React, { useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
 import { getHeroesByPublisher, useStore } from '../../store';
 import { HeroeComponent } from '../../components/HeroeComponent';
+import withAuthComponent from '../../components/withAuthComponent';
 
 const DCPage = () => {
-  const { user, heroes } = useStore( state => state )
-
-  const navigate = useNavigate();
+  const { heroes } = useStore( state => state )
 
   useEffect(() => {
-    if (!user) {
-      navigate('/login?redirect=/heroes')
-    }
-  getHeroesByPublisher("DC Comics")
+    getHeroesByPublisher("DC Comics")
   }, [])
   
 
@@ -46,4 +41,4 @@ const DCPage = () => {
   )
 }
 
-export default DCPage
+export default withAuthComponent(DCPage)

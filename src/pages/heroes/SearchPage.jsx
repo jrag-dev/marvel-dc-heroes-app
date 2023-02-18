@@ -1,33 +1,26 @@
 import React, { useEffect, useState } from 'react'
 import { getHeroesByName, useStore } from '../../store'
-import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import FormSearchComponent from '../../components/FormSearchComponent';
 
 
 import "./SearchPage.css";
 import { HeroeComponent } from '../../components/HeroeComponent';
+import withAuthComponent from '../../components/withAuthComponent';
 
 
 const SearchPage = () => {
 
-  const navigate = useNavigate();
-
-  const { user, heroesSearch } = useStore( state => state );
+  const { heroesSearch } = useStore( state => state );
 
   const [filter, setFilter] = useState("");
 
 
   useEffect(() => {
-    if (!user) {
-      return navigate("/login?redirect=/heroes")
-    }
     getHeroesByName(filter)
   }, [filter])
 
   // if (loading) return <div className="loading">Loading...</div>
 
-  console.log(filter)
-  
   return (
     <section className="search-page container">
 
@@ -39,7 +32,7 @@ const SearchPage = () => {
         <h3>Heroes List</h3>
         <article className="heroes-grid">
           {
-            !heroesSearch
+            !heroesSearch.length > 0
             ? (
               <div className="empty">Find a hero by name</div>
             ) :  (
@@ -57,4 +50,4 @@ const SearchPage = () => {
   )
 }
 
-export default SearchPage
+export default withAuthComponent(SearchPage);

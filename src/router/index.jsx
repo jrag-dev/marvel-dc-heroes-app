@@ -11,6 +11,7 @@ import NotFoundPage from "../pages/404/NotFoundPage";
 import LandingPage from "../pages/LandingPage";
 import SearchPage from "../pages/heroes/SearchPage";
 import HeroPage from "../pages/heroes/HeroPage";
+import App from "../pages/hoc/App";
 
 
 
@@ -46,6 +47,10 @@ export const router = createBrowserRouter([
           {
             path: "/hero/:id",
             element: <HeroPage/>
+          },
+          {
+            path: "/hoc",
+            element: <App/>,
           },
           {
             path: "/login",
